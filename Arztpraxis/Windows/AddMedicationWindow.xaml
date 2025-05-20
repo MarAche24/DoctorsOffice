@@ -1,0 +1,27 @@
+﻿<Window x:Class="Arztpraxis.Windows.AddMedicationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Arztpraxis.Windows"
+        mc:Ignorable="d"
+        Title="Medikamente hinzufügen"
+        Height="200" Width="300" ResizeMode="NoResize"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Grid>
+        <StackPanel Margin="10">
+            <Label FontSize="16">Medikament:</Label>
+            <ComboBox x:Name="MedicationBox" SelectedValue="{Binding Input.MedicationId}" ItemsSource="{Binding Medications}" SelectedValuePath="Id" DisplayMemberPath="Name" Margin="5 0"></ComboBox>
+
+            <WrapPanel Margin="0 20 0 0">
+                <Label FontSize="16" >Menge:</Label>
+                <TextBox x:Name="AmountInput" PreviewTextInput="IsNumber" Width="70" FontSize="16"/>
+            </WrapPanel>
+
+        </StackPanel>
+        <WrapPanel Margin="0 20 10 10" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button FontSize="16" Padding="5 0" Click="Add_Button_Click">Hinzufügen</Button>
+            <Button FontSize="16" Margin="15 0 0 0" Padding="5 0" Click="Cancel_Button_Click">Abbrechen</Button>
+        </WrapPanel>
+    </Grid>
+</Window>
