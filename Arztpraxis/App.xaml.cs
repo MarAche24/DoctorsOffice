@@ -18,9 +18,9 @@ namespace Arztpraxis
             .CreateDefaultBuilder()
             .ConfigureServices((context, services) =>
             {
-                // TODO: Add Authentication service
+                // Singletons can be passed through constructors. Leaving this here to see how it can be done.
                 services.AddDbContextFactory<DoctorsOfficeDbContext>((optinonsBuilder) =>
-                    optinonsBuilder.UseSqlServer("Data Source=TESTVM-MAC\\SQLEXPRESS;Initial Catalog=DoctorsOffice;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;"));
+                    optinonsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DoctorsOffice;Integrated Security=True;Connect Timeout=60;Encrypt=True;Trust Server Certificate=False;"));
                 services.AddSingleton<IPasswordHasher, PasswordHasherService>();
 
                 services.AddSingleton<AuthenticationService>((serviceProvider) =>
@@ -36,6 +36,8 @@ namespace Arztpraxis
 
         public AuthenticatedUser? CurrentUser { get; set; }
 
+        // use this insted of StartupURI
+         
         //public App()
         //    : base()
         //{
